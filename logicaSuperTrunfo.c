@@ -4,19 +4,18 @@
 // Tema 2 - Comparação das Cartas
 // Este código inicial serve como base para o desenvolvimento do sistema de comparação de cartas de cidades. 
     
- #include <stdio.h>
-    int main() {
+ int main() {
 
 //ATRIBUTOS CARTA 1
 
-    char estado1[3], codigo1[4], cidade1[50];
+    char estado1[10], codigo1[10], cidade1[50];
     float area1, pib1, densidade_populacional1, pib_per_capita1, super_poder1;
     int pontos_turisticos1;
     unsigned long int populacao1;
 
 //ATRIBUTOS CARTA 2
 
-    char estado2[3], codigo2[4], cidade2[50];
+    char estado2[10], codigo2[10], cidade2[50];
     float area2, pib2, densidade_populacional2, pib_per_capita2, super_poder2;
     int pontos_turisticos2;
     unsigned long int populacao2;
@@ -24,7 +23,7 @@
 //VARIAVEl DE COMPARAÇÃO
     char sim_nao;
     int opcao1, opcao2, iniciar, resultado1=0, resultado2=0, resultado3=0, resultado4=0;
-    int comparacao1=0, comparacao2=0, combina1=0, combina2=0;
+    int comparacao1=0, comparacao2=0, combina1=0, combina2=0, pontuacaoFinal1=0, pontuacaoFinal2=0;
     float soma1=0, soma2=0, soma3=0, soma4=0;
         printf("======================================================\n");
         printf("*** Bem Vindo ao  SUPER TRUNFO - CIDADES DO BRASIL ***\n");
@@ -212,7 +211,7 @@
                         printf("Escolha: ");
                         scanf(" %d", &opcao2);
                         printf("\n\n");
-                        printf("Comparação dos Atributos selecionados:\n");
+                        printf("Comparação dos Atributos selecionados:\n\n");
                         //VERIFICA SE OS ATRIBUTOS FORAM REPETIDOS
                         if (opcao1 != opcao2){
                         
@@ -531,7 +530,7 @@
                         }
                 
                         //VERIFICAÇÃO DOS RESULTADOS       
-                        printf("Soma dos Atributos:\n");
+                        printf("*** Soma dos Atributos ***\n");
                         printf("Carta - 1 %s: %.2f\n", cidade1, (soma1 + soma3));
                         printf("Carta - 2 %s: %.2f\n", cidade2, (soma2 + soma4));
                         if ((soma1 + soma3) > (soma2 + soma4)){
@@ -554,16 +553,42 @@
                         }
                         
                         //PLACAR FINAL
-                        printf("*** Placar Final ***\n");
-                        comparacao1 = resultado1 + resultado3 + combina1;
-                        comparacao2 = resultado2 + resultado4 + combina2;
+                        printf("*** Placar Da Rodada ***\n");
+                        printf("Primeira Rodada:\n");
+                        if (resultado1 == 1 & resultado3 == 1){
+                                pontuacaoFinal1 = 1;
+                                printf("Carta - 1 (%s) Venceu a Primeira Rodada!\n", cidade1);
+                        } else if (resultado2 == 1 & resultado4 == 1){
+                                pontuacaoFinal2 = 1;
+                                printf("Carta - 2 (%s) Venceu a Primeira Rodada!\n", cidade2);
+                        } else { 
+                                resultado1 = 0;
+                                resultado2 = 0;
+                                resultado3 = 0;
+                                resultado4 = 0;
+                                printf("Empate! Nenhuma das cartas Venceu nos dois atriutos.\n");
+                        }
+                        printf("\n");
+                        printf("Segunda Rodada:\n");
+                        if (combina1 == 1){
+                                printf("Carta - 1 (%s) Venceu a Segunda Rodada!\n", cidade1);
+                        } else if (combina2 == 1){
+                                printf("Carta - 2 (%s) Venceu a Segunda Rodada!\n", cidade2);
+                        } else{
+                                printf("Empate! A soma dos atributos foi igual para as duas cartas.\n");
+                                printf("Ninguem pontua!");
+                        }
+                        printf("\n");
+                        printf("*** Placar Geral ***\n");
+                        comparacao1 = pontuacaoFinal1 + combina1;
+                        comparacao2 = pontuacaoFinal2 + combina2;
                         printf("Carta 1 - %d ponto(s)\n", comparacao1);
                         printf("Carta 2 - %d ponto(s)\n", comparacao2);
                         
                         if (comparacao1 > comparacao2){
-                                printf("Carta - 1 Venceu!\n");
+                                printf("Carta - 1 (%s) Vence o Jogo!\n", cidade1);
                         } else if (comparacao1 < comparacao2){
-                                printf("Carta - 2 Venceu!\n");
+                                printf("Carta - 2 (%s) Vence o Jogo!\n", cidade2);
                         } else{
                                 printf("Empate!\n\n");
                         }
