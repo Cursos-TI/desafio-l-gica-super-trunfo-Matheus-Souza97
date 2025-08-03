@@ -26,7 +26,7 @@
     float soma1=0, soma2=0, soma3=0, soma4=0;
     float carta1=0, carta2=0;
         printf("======================================================\n");
-        printf("*** Bem Vindo ao  SUPER TRUNFO - CIDADES DO BRASIL ***\n");
+        printf("*** Bem Vindo ao SUPER TRUNFO - PAÍSES ***\n");
         printf("======================================================\n\n");
         printf("1. Jogar\n");
         printf("2. Ver Regras\n");
